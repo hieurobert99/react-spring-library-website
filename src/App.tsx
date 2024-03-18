@@ -15,19 +15,19 @@ export const App = () => {
   return (
     <div className='d-flex flex-column min-vh-100'>
 
-      <Navbar/>
+<Navbar />
       <div className='flex-grow-1'>
         <Switch>
-          <Route path="/" exact>
-            <Redirect to="/home"/>
+          <Route path='/' exact>
+            <Redirect to='/home' />
           </Route>
-          <Route path="/home">
-            <HomePage/>
+          <Route path='/home'>
+            <HomePage />
           </Route>
-          <Route path="/search">
-            <SearchBooksPage/>
+          <Route path='/search'>
+            <SearchBooksPage />
           </Route>
-          <Route path="/checkout/:bookId">
+          <Route path='/checkout/:bookId'>
             <BookCheckoutPage/>
           </Route>
       </Switch>
