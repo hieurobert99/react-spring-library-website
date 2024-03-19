@@ -1,23 +1,21 @@
-import React from "react";
-import "./App.css";
-import { Navbar } from "./layouts/NavbarAndFooter/Navbar";
-import { ExploreTopBooks } from "./layouts/HomePage/components/ExploreTopBooks";
-import { Carousel } from "./layouts/HomePage/components/Carousel";
-import { Heros } from "./layouts/HomePage/components/Heros";
-import { LibraryServices } from "./layouts/HomePage/components/LibraryServices";
-import { Footer } from "./layouts/NavbarAndFooter/Footer";
-import { HomePage } from "./layouts/HomePage/HomePage";
-import { SearchBooksPage } from "./layouts/SearchBooksPage/SearchBooksPage";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import { BookCheckoutPage } from "./layouts/BookCheckoutPage/BookCheckoutPage";
+import React from 'react';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import './App.css';
+import { BookCheckoutPage } from './layouts/BookCheckoutPage/BookCheckoutPage';
+import { HomePage } from './layouts/HomePage/HomePage';
+import { Footer } from './layouts/NavbarAndFooter/Footer';
+import { Navbar } from './layouts/NavbarAndFooter/Navbar';
+import { SearchBooksPage } from './layouts/SearchBooksPage/SearchBooksPage';
 import { oktaConfig } from './lib/oktaConfig';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 import LoginWidget from './Auth/LoginWidget';
 
+
 const oktaAuth = new OktaAuth(oktaConfig);
 
 export const App = () => {
+
   const customAuthHandler = () => {
     history.push('/login');
   }
@@ -28,9 +26,10 @@ export const App = () => {
     history.replace(toRelativeUrl(originalUri || '/', window.location.origin));
   };
 
+
   return (
     <div className='d-flex flex-column min-vh-100'>
-<Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri} onAuthRequired={customAuthHandler}>
+      <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri} onAuthRequired={customAuthHandler}>
       <Navbar />
       <div className='flex-grow-1'>
         <Switch>
@@ -55,8 +54,6 @@ export const App = () => {
       </div>
       <Footer />
       </Security>
-      <Navbar />
-     
     </div>
   );
-};
+}
